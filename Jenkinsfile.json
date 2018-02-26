@@ -1,0 +1,27 @@
+{
+  "app": {
+    "name": "HelloNodeJS",
+    "replicas": "2",
+    "cpu": "10m",
+    "memory": "128Mi",
+    "test": false,
+    "hostname": "mimir2.hellonodejs.com"
+  },
+  "container_repo": {
+    "host": "docker.io",
+    "master_acct": "rajkris2",
+    "alt_acct": "rajkris2",
+    "jenkins_creds_id": "",
+    "repo": "HelloNodeJS",
+    "dockeremail": ".",
+    "dockerfile": "./",
+    "image_scanning": false
+  },
+  "pipeline": {
+      "enabled": true,
+      "debug": false,
+      "library": {
+        "branch": "dev"
+      }
+  }
+}
