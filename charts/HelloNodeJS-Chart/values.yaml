@@ -1,29 +1,39 @@
-# Default values for croc-hunter.
+# Default values for hellonodejs-chart.
 # This is a YAML-formatted file.
-# Declare name/value pairs to be passed into your templates.
-# name: value
-
-serviceType: NodePort
-servicePort: 8080
-containerPort: 3000
-component: "HelloNodeJS-chart"
-replicas: 2
-image: "containers.cisco.com/rajkris2/hellonodejs"
-imageTag: "v1"
-imagePullPolicy: "Always"
-## If you have a private registry you specify a secret to use
-#imagePullSecrets:
-cpu: "10m"
-memory: "128Mi"
-## Ingress settings
+# Declare variables to be passed into your templates.
+replicaCount: 2
+image:
+  repository: containers.cisco.com/rajkris2/hellonodejs
+  tag: "v1"
+  pullPolicy: IfNotPresent
+  pullSecret: rajkris2-msmk8s-pull-secret
+service:
+  name: hellonodejs-chart
+  type: NodePort
+  externalPort: 8080
+  internalPort: 8080
 ingress:
-  enabled: true
-  hostname: HelloNodeJS.io
-  annotations:
-     kubernetes.io/ingress.class: nginx
-     kubernetes.io/tls-acme: "true"
-  tls: true
-## PodDisruptionBudget
-pdb:
   enabled: false
-  minAvailable: 2
+  # Used to create an Ingress record.
+  hosts:
+    - chart-example.local
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious 
+  # choice for the user. This also increases chances charts run on environments with little 
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following 
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
