@@ -9,9 +9,9 @@
   },
   "container_repo": {
     "host": "docker.io",
-    "master_acct": "rajkris2",
-    "alt_acct": "rajkris2",
-    "jenkins_creds_id": "",
+    "master_acct": "rajakrish82",
+    "alt_acct": "rajakrish82",
+    "jenkins_creds_id": "test",
     "repo": "HelloNodeJS",
     "dockeremail": ".",
     "dockerfile": "./",

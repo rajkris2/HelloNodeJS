@@ -8,8 +8,8 @@ servicePort: 8080
 containerPort: 3000
 component: "HelloNodeJS-chart"
 replicas: 2
-image: "rajkris2/HelloNodeJS"
-imageTag: "latest"
+image: "containers.cisco.com/rajkris2/hellonodejs"
+imageTag: "v1"
 imagePullPolicy: "Always"
 ## If you have a private registry you specify a secret to use
 #imagePullSecrets:
